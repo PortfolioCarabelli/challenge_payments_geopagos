@@ -1,0 +1,47 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7274",
+    "DangerousAcceptAnyServerCertificateValidator": true
+  },
+  "Routes": [
+    //AuthorizationServices
+    {
+      "DownstreamPathTemplate": "/api/authorization/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7053
+        }
+      ],
+      "UpstreamPathTemplate": "/authorization/{everything}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/authorization/authorization-requests",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7053
+        }
+      ],
+      "UpstreamPathTemplate": "/authorization/authorization-requests",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+
+    //ConfirmationServices
+    {
+      "DownstreamPathTemplate": "/api/confirmation/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7079
+        }
+      ],
+      "UpstreamPathTemplate": "/confirmation/{everything}",
+      "UpstreamHttpMethod": [ "POST" ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\bin\Debug\net6.0\Common.deps.json
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\bin\Debug\net6.0\Common.dll
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\bin\Debug\net6.0\Common.pdb
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\Common.AssemblyInfoInputs.cache
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\Common.AssemblyInfo.cs
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\Common.csproj.CoreCompileInputs.cache
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\Common.dll
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\refint\Common.dll
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\Common.pdb
+D:\Challenge_Geopagos\ChallengePaymentsGeopagos\Common\obj\Debug\net6.0\ref\Common.dll
