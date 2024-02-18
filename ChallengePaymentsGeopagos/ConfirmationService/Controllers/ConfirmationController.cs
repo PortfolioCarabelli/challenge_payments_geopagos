@@ -1,8 +1,8 @@
-﻿using AuthorizationService.DTOs;
-using AuthorizationService.Models;
-using AuthorizationService.Services.Contracts;
+﻿using AuthorizationService.Services.Contracts;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Persistence.DTOs;
+using Persistence.Models;
 
 namespace ConfirmationService.Controllers
 {
@@ -21,18 +21,31 @@ namespace ConfirmationService.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("confirm")]
-        public async Task<IActionResult> ConfirmAsync([FromBody] ConfirmationRequestDTO confirmationRequestDTO)
+        [HttpPost("confirm/{AuthorizationId}")]
+        public async Task<IActionResult> ConfirmAuthorization(int AuthorizationId)
         {
             try
             {
-                var confirmationRequest = _mapper.Map<ConfirmationRequest>(confirmationRequestDTO);
-                await _repository.AddConfirmationRequestAsync(confirmationRequest);
-                return Ok("Confirmation request created successfully.");
+                // Verificar si el monto es aprobado por el procesador de pago
+                var isApproved = await _repository.ConfirmAuthorization(AuthorizationId);
+
+                if (isApproved != null)
+                {
+                    // La autorización fue confirmada exitosamente
+                    // Aquí puedes realizar cualquier lógica adicional necesaria
+                    return Ok("Authorization confirmed successfully.");
+                }
+                else
+                {
+                    // La autorización no fue confirmada
+                    // Aquí puedes realizar cualquier lógica adicional necesaria
+                    return BadRequest("Authorization confirmation failed.");
+                }
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred while confirming the request: {ex.Message}");
+                // Manejar errores
+                return StatusCode(500, "Error al confirmar la autorización");
             }
         }
     }

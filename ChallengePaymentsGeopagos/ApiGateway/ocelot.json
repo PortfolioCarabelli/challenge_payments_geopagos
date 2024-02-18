@@ -4,9 +4,8 @@
     "DangerousAcceptAnyServerCertificateValidator": true
   },
   "Routes": [
-    //AuthorizationServices
     {
-      "DownstreamPathTemplate": "/api/authorization/{everything}",
+      "DownstreamPathTemplate": "/api/Authorization/authorize/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -14,11 +13,11 @@
           "Port": 7053
         }
       ],
-      "UpstreamPathTemplate": "/authorization/{everything}",
+      "UpstreamPathTemplate": "/authorize/{everything}",
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
-      "DownstreamPathTemplate": "/api/authorization/authorization-requests",
+      "DownstreamPathTemplate": "/api/Authorization/authorizeGet/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -26,13 +25,11 @@
           "Port": 7053
         }
       ],
-      "UpstreamPathTemplate": "/authorization/authorization-requests",
+      "UpstreamPathTemplate": "/authorizeGet/{everything}",
       "UpstreamHttpMethod": [ "GET" ]
-    }
-
-    //ConfirmationServices
+    },
     {
-      "DownstreamPathTemplate": "/api/confirmation/{everything}",
+      "DownstreamPathTemplate": "/api/Confirmation/confirm/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -40,7 +37,7 @@
           "Port": 7079
         }
       ],
-      "UpstreamPathTemplate": "/confirmation/{everything}",
+      "UpstreamPathTemplate": "/confirm/{everything}",
       "UpstreamHttpMethod": [ "POST" ]
     }
   ]

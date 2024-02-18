@@ -1,9 +1,10 @@
-﻿using AuthorizationService.DTOs;
-using AuthorizationService.Models;
-using AuthorizationService.Services.Contracts;
+﻿using AuthorizationService.Services.Contracts;
 using AutoMapper;
+using ConfirmationService.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Persistence.DTOs;
+using Persistence.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,41 +17,42 @@ namespace AuthorizationService.Controllers
     {
         private readonly IAuthorizationRepository _repository;
         private readonly IMapper _mapper;
+        private readonly PaymentProcessorClient _paymentProcessorClient;
 
-        public AuthorizationController(IAuthorizationRepository repository, IMapper mapper)
+        public AuthorizationController(IAuthorizationRepository repository, IMapper mapper, PaymentProcessorClient paymentProcessorClient)
         {
             _repository = repository;
             _mapper = mapper;
+            _paymentProcessorClient = paymentProcessorClient;
         }
 
         [HttpPost("authorize")]
-        public async Task<IActionResult> AuthorizeAsync([FromBody] AuthorizationRequestDTO authorizationRequestDTO)
+        public async Task<IActionResult> AuthorizePayment([FromBody] AuthorizationRequestDTO requestDTO)
         {
             try
             {
-                var authorizationRequest = _mapper.Map<AuthorizationRequest>(authorizationRequestDTO);
-                await _repository.AddAuthorizationRequestAsync(authorizationRequest);
-                return Ok("Authorization request created successfully.");
+                // Mapear el DTO de solicitud al modelo de solicitud
+                var requestModel = _mapper.Map<AuthorizationRequestDTO, AuthorizationRequest>(requestDTO);
+
+                // Llamar al servicio de autorización para manejar la solicitud
+                var response = await _repository.AuthorizePayment(requestModel);
+
+                bool isApproved = await _paymentProcessorClient.IsPaymentApproved(response.Id);
+                // Devolver la respuesta HTTP
+                return Ok(response);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred while authorizing the request: {ex.Message}");
+                // Manejar errores y devolver una respuesta de error
+                return StatusCode(500, new { Message = "An error occurred while processing the request.", Error = ex.Message });
             }
         }
 
-        [HttpGet("authorization-requests")]
-        public async Task<IActionResult> GetAllAuthorizationRequestsAsync()
+
+        [HttpGet("authorizeGet")]
+        public async Task GetAuthorizePayment()
         {
-            try
-            {
-                var authorizationRequests = await _repository.GetAllAuthorizationRequestsAsync();
-                var authorizationRequestDTOs = _mapper.Map<IEnumerable<AuthorizationRequestDTO>>(authorizationRequests);
-                return Ok(authorizationRequestDTOs);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred while retrieving authorization requests: {ex.Message}");
-            }
+            Console.WriteLine("Hola entre piola");
         }
     }
 }

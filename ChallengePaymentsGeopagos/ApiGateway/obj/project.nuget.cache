@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qkwB2+D9aE6LCuMh177bPsavsBEDlS3oW9xNqI15c+4BgEoRylSNsVA4JnjjH2630WPmuQvVBK0yjSLQDbg+Eg==",
+  "dgSpecHash": "bvhFeJQB4OsrkY1mC8VQPWdrjKwT9Wo5lz0y/DL/oVvBfFxlEwpAFXIX5YM8traYU6AlPE/MUPfT0sR1ECorcw==",
   "success": true,
-  "projectFilePath": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\ApiGateway.csproj",
+  "projectFilePath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fcarabelli\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
     "C:\\Users\\fcarabelli\\.nuget\\packages\\ipaddressrange\\6.0.0\\ipaddressrange.6.0.0.nupkg.sha512",

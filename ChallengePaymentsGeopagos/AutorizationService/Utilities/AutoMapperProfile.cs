@@ -1,7 +1,6 @@
-﻿using AuthorizationService.DTOs;
-using AuthorizationService.Models;
-using AutoMapper;
-
+﻿using AutoMapper;
+using Persistence.DTOs;
+using Persistence.Models;
 using System.Globalization;
 
 namespace AuthorizationService.Utilidades

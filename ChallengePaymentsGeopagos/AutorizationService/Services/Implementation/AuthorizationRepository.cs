@@ -1,29 +1,53 @@
-﻿using AuthorizationService.Data;
-using AuthorizationService.Models;
-using AuthorizationService.Services.Contracts;
+﻿using AuthorizationService.Services.Contracts;
+using ConfirmationService.Utilities;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Data;
+using Persistence.DTOs;
+using Persistence.Models;
 
 namespace AuthorizationService.Services.Implementation
 {
     public class AuthorizationRepository : IAuthorizationRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AplicationDbContext _context;
+   
 
-        public AuthorizationRepository(ApplicationDbContext context)
+        public AuthorizationRepository(AplicationDbContext context)
         {
             _context = context;
+          
         }
 
-        public async Task AddAuthorizationRequestAsync(AuthorizationRequest authorizationRequest)
+        public async Task<AuthorizationRequest> AuthorizePayment(AuthorizationRequest authorizationRequest)
         {
-            _context.AuthorizationRequests.Add(authorizationRequest);
-            await _context.SaveChangesAsync();
+            try
+            {
+                // Validar la solicitud de autorización
+                if (!IsPaymentRequestValid(authorizationRequest))
+                {
+                    return new AuthorizationRequest { Status = "Error"};
+                }
 
+                // Actualizar el estado de la solicitud en la base de datos
+                authorizationRequest.Status = "pending";
+                await _context.AuthorizationRequests.AddAsync(authorizationRequest);
+                await _context.SaveChangesAsync();
+
+                // Devolver la respuesta de autorización
+                return authorizationRequest;
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores
+                return new AuthorizationRequest { Status = "error"};
+            }
         }
 
-        public async Task<IEnumerable<AuthorizationRequest>> GetAllAuthorizationRequestsAsync()
+        private bool IsPaymentRequestValid(AuthorizationRequest authorizationRequest)
         {
-            return await _context.AuthorizationRequests.ToListAsync();
+            return authorizationRequest.Amount > 0 && authorizationRequest.ClientId != null;
         }
+
+    
     }
 }

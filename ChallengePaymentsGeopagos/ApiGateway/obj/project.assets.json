@@ -931,11 +931,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\ApiGateway.csproj",
+      "projectUniqueName": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\ApiGateway.csproj",
       "projectName": "ApiGateway",
-      "projectPath": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\ApiGateway.csproj",
+      "projectPath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\ApiGateway.csproj",
       "packagesPath": "C:\\Users\\fcarabelli\\.nuget\\packages\\",
-      "outputPath": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\obj\\",
+      "outputPath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\ApiGateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fcarabelli\\AppData\\Roaming\\NuGet\\NuGet.Config",

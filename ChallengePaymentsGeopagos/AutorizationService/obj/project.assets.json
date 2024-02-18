@@ -877,6 +877,23 @@
             "rid": "win"
           }
         }
+      },
+      "Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.EntityFrameworkCore": "6.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.4",
+          "Swashbuckle.AspNetCore": "6.5.0"
+        },
+        "compile": {
+          "bin/placeholder/Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Persistence.dll": {}
+        }
       }
     }
   },
@@ -2506,6 +2523,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Persistence/1.0.0": {
+      "type": "project",
+      "path": "../Persistence/Persistence.csproj",
+      "msbuildProject": "../Persistence/Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2515,6 +2537,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 6.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.19.4",
+      "Persistence >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -2524,11 +2547,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\AutorizationService\\AuthorizationService.csproj",
+      "projectUniqueName": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\AutorizationService\\AuthorizationService.csproj",
       "projectName": "AuthorizationService",
-      "projectPath": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\AutorizationService\\AuthorizationService.csproj",
+      "projectPath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\AutorizationService\\AuthorizationService.csproj",
       "packagesPath": "C:\\Users\\fcarabelli\\.nuget\\packages\\",
-      "outputPath": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\AutorizationService\\obj\\",
+      "outputPath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\AutorizationService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\fcarabelli\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2544,7 +2567,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\Persistence\\Persistence.csproj": {
+              "projectPath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\Persistence\\Persistence.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "923EOcIgnDiAo+sPmUHGo0N9sH0mwExUoqhfbSkeyN5yMUolPH+FmlSv8FWm69INzymKi8a1X6BfSX2+BCxRVQ==",
+  "dgSpecHash": "ejPVHevr76piM44Y/TV/Hsxk4yg1xTFpHuBeL7SDHnvL8dMUV7LKL9PraOq2H8vCbyO40n/WRmrO/FT4fre2eA==",
   "success": true,
-  "projectFilePath": "D:\\Challenge_Geopagos\\ChallengePaymentsGeopagos\\ConfirmationService\\ConfirmationService.csproj",
+  "projectFilePath": "D:\\challenge_payments_geopagos\\ChallengePaymentsGeopagos\\ConfirmationService\\ConfirmationService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fcarabelli\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\fcarabelli\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
