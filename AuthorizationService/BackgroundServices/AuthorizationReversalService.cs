@@ -10,12 +10,10 @@ namespace AuthorizationService.BackgroundServices
 {
     public class AuthorizationReversalService : BackgroundService
     {
-        private readonly ILogger<AuthorizationReversalService> _logger;
         private readonly IServiceProvider _services;
 
-        public AuthorizationReversalService(ILogger<AuthorizationReversalService> logger, IServiceProvider services)
+        public AuthorizationReversalService(IServiceProvider services)
         {
-            _logger = logger;
             _services = services;
         }
 
@@ -23,7 +21,6 @@ namespace AuthorizationService.BackgroundServices
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Authorization reversal service is running.");
 
 
                 using (var scope = _services.CreateScope())
@@ -44,7 +41,6 @@ namespace AuthorizationService.BackgroundServices
                         {
                         
                             await authorizationRepository.ReverseAuthorizationAsync(authorization);
-                            _logger.LogInformation($"Authorization reversed for request id: {authorization.Id}");
                         }
                     }
                 }

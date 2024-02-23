@@ -62,7 +62,6 @@ namespace AuthorizationService.Services.Implementation
             }
             catch (Exception ex)
             {
-                return new AuthorizationRequest { Status = "error" };
             }
         }
 
