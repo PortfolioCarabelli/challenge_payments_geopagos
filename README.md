@@ -12,6 +12,12 @@ Este microservicio maneja las solicitudes de autorización de pagos. Los cliente
 
 Para los clientes que requieran confirmación de autorización, este microservicio maneja las solicitudes de confirmación y realiza las acciones correspondientes, como generar autorizaciones de reversa si la confirmación no se realiza dentro del tiempo especificado.
 
+### ReportingService
+Este microservicio se encarga de generar un reporte o una lista de las solicitudes de autorizaciones de pagos aprobadas
+
+### Persistence
+Contiene la lógica de acceso a datos, incluidos los modelos de datos y el contexto de la base de datos.
+
 ## Tecnologías Utilizadas
 
 - .NET 6
@@ -20,33 +26,44 @@ Para los clientes que requieran confirmación de autorización, este microservic
 - Ocelot API Gateway
 - SQL Server
 
-## Estructura del Proyecto
+## Configuración
+## Base de Datos
+1. Asegúrate de tener SQL Server instalado y en funcionamiento.
+2. Actualiza la cadena de conexión en el archivo appsettings.json del proyecto AuthorizationService con los detalles de tu instancia de SQL Server.
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=AuthorizationDb;Trusted_Connection=True;"
+}
+```
+3. Ejecuta las migraciones de base de datos para crear el esquema inicial:
+Ejecuta el comando:
+```
+dotnet ef database update --project Persistence
 
-El repositorio está organizado de la siguiente manera:
+```
+4.
+Insertar Clientes
+Puedes insertar clientes en la base de datos utilizando SQL Server Management Studio
+```
+-- Insertar cliente tipo First
+INSERT INTO Clients (Name, ClientType) VALUES ('ClienteFirst', 'First');
 
-- `AuthorizationService`: Contiene el microservicio de autorización.
-- `ConfirmationService`: Contiene el microservicio de confirmación.
-- `ApiGateway`: Contiene la API Gateway configurada con Ocelot.
-- `docker-compose.yml`: Archivo de Docker Compose para ejecutar todos los servicios.
-- `README.md`: Este archivo.
+-- Insertar cliente tipo Second
+INSERT INTO Clients (Name, ClientType) VALUES ('ClienteSecond', 'Second');
 
-## Instrucciones de Ejecución
+```
 
-### Requisitos Previos
+## Ejecución del Proyecto
+Abre una terminal en el directorio raíz del proyecto.
+Ejecuta el comando:
+```
+dotnet run --project AuthorizationService
+dotnet run --project ApiGateway
+dotnet run --project ConfirmationServices
+dotnet run --project ReportingService
 
-- Tener instalado Docker y Docker Compose en el sistema.
+```
+Esto iniciará los servicio en los puertos configurados
 
-### Pasos para Ejecutar
 
-1. Clonar el repositorio en tu máquina local.
-2. Abrir una terminal en la raíz del repositorio.
-3. Ejecutar el siguiente comando para iniciar los servicios:
 
-```bash
-docker-compose up
-Esto levantará todos los microservicios y la API Gateway en contenedores Docker.
-
-Acceso a los Servicios
-AuthorizationService: http://localhost:5000
-ConfirmationService: http://localhost:5001
-API Gateway (Ocelot): http://localhost:5002
