@@ -18,8 +18,6 @@ Para los clientes que requieran confirmación de autorización, este microservic
 - Entity Framework Core
 - AutoMapper
 - Ocelot API Gateway
-- RabbitMQ y MassTransit
-- Docker
 - SQL Server
 
 ## Estructura del Proyecto
