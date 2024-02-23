@@ -1,0 +1,56 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7278",
+    "DangerousAcceptAnyServerCertificateValidator": true
+  },
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Authorization/authorize",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7242 // Puerto donde se ejecuta el servicio de autorización
+        }
+      ],
+      "UpstreamPathTemplate": "/Authorization/authorize",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Authorization/authorizeGet",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7242 // Puerto donde se ejecuta el servicio de autorización
+        }
+      ],
+      "UpstreamPathTemplate": "/Authorization/authorizeGet",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Confirmation/confirm/{AuthorizationId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7230 // Puerto donde se ejecuta el servicio de confirmación
+        }
+      ],
+      "UpstreamPathTemplate": "/Confirmation/confirm/{AuthorizationId}",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Reporting/approved-authorizations",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7033 // Puerto donde se ejecuta el servicio de reportes
+        }
+      ],
+      "UpstreamPathTemplate": "/Reporting/approved-authorizations",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ]
+}

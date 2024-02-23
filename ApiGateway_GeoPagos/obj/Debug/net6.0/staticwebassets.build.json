@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "fEfCMdvRkt3osuZNAc6uTWemStERa8FuRDBOylfrlMY=",
+  "Source": "ApiGateway_GeoPagos",
+  "BasePath": "_content/ApiGateway_GeoPagos",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
